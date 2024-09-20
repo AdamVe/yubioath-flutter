@@ -25,6 +25,7 @@ import '../features.dart' as features;
 import '../keys.dart' as keys;
 import '../models.dart';
 import 'add_fingerprint_dialog.dart';
+import 'add_secret_note_dialog.dart';
 import 'enterprise_attestation_dialog.dart';
 import 'pin_dialog.dart';
 
@@ -36,6 +37,10 @@ bool fingerprintsShowActionsNotifier(FidoState state) {
   return !state.hasPin || state.bioEnroll == false || state.forcePinChange;
 }
 
+bool secretNotesShowActionsNotifier(FidoState state) {
+  return !state.hasPin || state.bioEnroll == false || state.forcePinChange;
+}
+
 Widget passkeysBuildActions(
         BuildContext context, DeviceNode node, FidoState state) =>
     _fidoBuildActions(context, node, state);
@@ -43,6 +48,10 @@ Widget passkeysBuildActions(
 Widget fingerprintsBuildActions(BuildContext context, DeviceNode node,
         FidoState state, int fingerprints) =>
     _fidoBuildActions(context, node, state, fingerprints);
+
+Widget secretNotesBuildActions(
+        BuildContext context, DeviceNode node, FidoState state) =>
+    _fidoBuildSecretNotesActions(context, node, state);
 
 Widget _fidoBuildActions(BuildContext context, DeviceNode node, FidoState state,
     [int? fingerprints]) {
@@ -145,6 +154,79 @@ Widget _fidoBuildActions(BuildContext context, DeviceNode node, FidoState state,
                     }
                   : null,
             )
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _fidoBuildSecretNotesActions(
+    BuildContext context, DeviceNode node, FidoState state) {
+  final l10n = AppLocalizations.of(context)!;
+  final colors = Theme.of(context).buttonTheme.colorScheme ??
+      Theme.of(context).colorScheme;
+  final authBlocked = state.pinBlocked;
+
+  return Column(
+    children: [
+      ActionListSection(
+        l10n.s_setup,
+        children: [
+          ActionListItem(
+            key: keys.addFingerprintAction,
+            feature: features.actionsAddFingerprint,
+            actionStyle: ActionStyle.primary,
+            icon: const Icon(Symbols.note_add),
+            title: l10n.s_add_secret_note,
+            subtitle: state.unlocked
+                ? null
+                : state.hasPin
+                    ? l10n.l_unlock_pin_first
+                    : l10n.l_set_pin_first,
+            onTap: state.unlocked
+                ? (context) {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                    showBlurDialog(
+                      context: context,
+                      builder: (context) => AddSecretNoteDialog(node.path),
+                    );
+                  }
+                : null,
+          ),
+        ],
+      ),
+      ActionListSection(
+        l10n.s_manage,
+        children: [
+          ActionListItem(
+            key: keys.managePinAction,
+            feature: features.actionsPin,
+            icon: const Icon(Symbols.pin),
+            title: state.hasPin ? l10n.s_change_pin : l10n.s_set_pin,
+            subtitle: authBlocked
+                ? l10n.l_pin_blocked
+                : state.hasPin
+                    ? (state.forcePinChange
+                        ? l10n.s_pin_change_required
+                        : state.pinRetries != null
+                            ? l10n.l_attempts_remaining(state.pinRetries!)
+                            : l10n.s_fido_pin_protection)
+                    : l10n.s_fido_pin_protection,
+            trailing: authBlocked ||
+                    state.alwaysUv && !state.hasPin ||
+                    state.forcePinChange
+                ? Icon(Symbols.warning_amber, color: colors.tertiary)
+                : null,
+            onTap: !authBlocked
+                ? (context) {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                    showBlurDialog(
+                      context: context,
+                      builder: (context) => FidoPinDialog(node.path, state),
+                    );
+                  }
+                : null,
+          ),
         ],
       ),
     ],

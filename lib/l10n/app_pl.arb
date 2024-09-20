@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "Klucze dostępu",
+    "s_secret_notes": null,
     "s_no_passkeys": null,
     "l_ready_to_use": "Gotowe do użycia",
     "l_register_sk_on_websites": "Zarejestruj jako klucz bezpieczeństwa na stronach internetowych",
@@ -527,6 +528,7 @@
     "s_fingerprints": "Odciski palców",
     "l_fingerprint_captured": "Odcisk palca zarejestrowany pomyślnie!",
     "s_fingerprint_added": "Dodano odcisk palca",
+    "s_secret_note_added": null,
     "l_adding_fingerprint_failed": "Błąd dodawania odcisku palca: {message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "Skonfiguruj odciski palców",
     "p_setup_fingerprints_desc": "Przed użyciem klucza należy skonfigurować odciski palców.",
     "s_add_fingerprint": "Dodaj odcisk palca",
+    "s_add_secret_note": null,
     "s_delete_fingerprint": "Usuń odcisk palca",
     "l_delete_fingerprint_desc": "Usuń odcisk palca z klucza YubiKey",
     "s_fingerprint_deleted": "Odcisk palca został usunięty",
     "p_warning_delete_fingerprint": "Spowoduje to usunięcie odcisku palca z twojego YubiKey.",
     "s_fingerprints_get_started": "Zacznij korzystać z odcisków palców",
+    "s_secret_notes_get_started": null,
     "p_set_fingerprints_desc": "Przed możliwością zarejestrowania odcisków palców, należy ustawić PIN.",
+    "p_use_secret_note_desc": null,
     "l_no_fps_added": "Nie dodano odcisków palców",
     "s_rename_fp": "Zmień nazwę odcisku palca",
     "l_rename_fp_desc": "Zmień etykietę",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "Dodaj jeden lub więcej (do pięciu) odcisków palców",
+    "l_add_secret_note": null,
     "l_fingerprints_used": "Zarejestrowano {used}/5 odcisków palców",
     "@l_fingerprints_used": {
         "placeholders": {

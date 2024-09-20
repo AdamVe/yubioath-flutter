@@ -20,6 +20,7 @@ const _prefix = 'fido.keys';
 const _keyAction = '$_prefix.actions';
 const _credentialAction = '$_prefix.credential.actions';
 const _fingerprintAction = '$_prefix.fingerprint.actions';
+const _secretNoteAction = '$_prefix.secret_note.actions';
 const _credentialInfo = '$_prefix.credential.info';
 
 // Key actions
@@ -42,6 +43,10 @@ const deleteCredentialAction = Key('$_credentialAction.delete');
 // Fingerprint actions
 const editFingerprintAction = Key('$_fingerprintAction.edit');
 const deleteFingerprintAction = Key('$_fingerprintAction.delete');
+
+// Secret notes actions
+const editSecretNoteAction = Key('$_secretNoteAction.edit');
+const deleteSecretNoteAction = Key('$_secretNoteAction.delete');
 
 const saveButton = Key('$_prefix.save');
 const deleteButton = Key('$_prefix.delete');

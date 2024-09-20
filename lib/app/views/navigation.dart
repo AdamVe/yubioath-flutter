@@ -92,6 +92,7 @@ extension on Section {
         Section.securityKey => Symbols.security_key,
         Section.passkeys => Symbols.passkey,
         Section.fingerprints => Symbols.fingerprint,
+        Section.secretNotes => Symbols.note_stack,
         Section.slots => Symbols.touch_app,
         Section.certificates => Symbols.id_card,
       };
@@ -102,6 +103,7 @@ extension on Section {
         Section.securityKey => u2fAppDrawer,
         Section.passkeys => fidoPasskeysAppDrawer,
         Section.fingerprints => fidoFingerprintsAppDrawer,
+        Section.secretNotes => fidoSecretNotesAppDrawer,
         Section.slots => otpAppDrawer,
         Section.certificates => pivAppDrawer,
       };

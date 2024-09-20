@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "Clés d'accès",
+    "s_secret_notes": null,
     "s_no_passkeys": "Aucun mot de passe",
     "l_ready_to_use": "Prête à l'emploi",
     "l_register_sk_on_websites": "Enregistrer comme clé de sécurité sur le Web",
@@ -527,6 +528,7 @@
     "s_fingerprints": "Empreintes digitales",
     "l_fingerprint_captured": "Empreinte digitale capturée avec succès\u00a0!",
     "s_fingerprint_added": "Empreinte digitale ajoutée",
+    "s_secret_note_added": null,
     "l_adding_fingerprint_failed": "Erreur d'ajout d'empreinte\u00a0: {message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "Configurer empreintes digitales",
     "p_setup_fingerprints_desc": "Les empreintes digitales doivent être configurées avant d'utiliser la clé.",
     "s_add_fingerprint": "Ajouter empreinte digitale",
+    "s_add_secret_note": null,
     "s_delete_fingerprint": "Supprimer empreinte digitale",
     "l_delete_fingerprint_desc": "Retirer l'empreinte digitale de la YubiKey",
     "s_fingerprint_deleted": "Empreinte digitale supprimée",
     "p_warning_delete_fingerprint": "Cela supprimera l'empreinte digitale de votre YubiKey.",
     "s_fingerprints_get_started": "Démarrer avec les empreintes digitales",
+    "s_secret_notes_get_started": null,
     "p_set_fingerprints_desc": "Créez un code PIN avant d'enregistrer des empreintes digitales.",
+    "p_use_secret_note_desc": null,
     "l_no_fps_added": "Aucune empreinte digitale ajoutée",
     "s_rename_fp": "Renommer empreinte digitale",
     "l_rename_fp_desc": "Renommer",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "Ajouter une ou plusieurs empreintes (jusqu'à\u00a05)",
+    "l_add_secret_note": null,
     "l_fingerprints_used": "{used}\u00a0empreintes sur 5 enregistrées",
     "@l_fingerprints_used": {
         "placeholders": {

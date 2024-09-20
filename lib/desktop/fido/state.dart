@@ -341,3 +341,70 @@ class _DesktopFidoCredentialsNotifier extends FidoCredentialsNotifier {
     ref.invalidate(fidoStateProvider(_session.devicePath));
   }
 }
+
+final desktopSecretNotesProvider = AsyncNotifierProvider.autoDispose
+    .family<FidoSecretNotesNotifier, List<FidoSecretNote>, DevicePath>(
+        _DesktopFidoSecretNotesNotifier.new);
+
+class _DesktopFidoSecretNotesNotifier extends FidoSecretNotesNotifier {
+  late RpcNodeSession _session;
+
+  @override
+  FutureOr<List<FidoSecretNote>> build(DevicePath devicePath) async {
+    _session = ref.watch(_sessionProvider(devicePath));
+    ref.watch(fidoStateProvider(devicePath));
+
+    // Refresh on active
+    ref.listen<WindowState>(
+      windowStateProvider,
+      (prev, next) async {
+        if (prev?.active == false && next.active) {
+          // Refresh state on active
+          final newState = await _build(devicePath);
+          if (state.valueOrNull != newState) {
+            state = AsyncValue.data(newState);
+          }
+        }
+      },
+    );
+
+    return _build(devicePath);
+  }
+
+  FutureOr<List<FidoSecretNote>> _build(DevicePath devicePath) async {
+    final List<FidoSecretNote> secretNotes = [];
+    _log.debug('Getting secret notes');
+    final secretNotesRps = await _session.command('secret_notes');
+    _log.debug('After getting secret notes: $secretNotesRps');
+    for (final rpId
+        in (secretNotesRps['children'] as Map<String, dynamic>).keys) {
+      _log.debug('Processing child $rpId');
+      secretNotes.add(FidoSecretNote(
+          id: rpId, content: secretNotesRps['children'][rpId]['user_name']));
+    }
+
+    _log.debug('Returning list of ${secretNotes.length} secret notes');
+    return List.unmodifiable(secretNotes);
+  }
+
+  @override
+  Future<void> delete(FidoSecretNote secretNote) async {
+    await _session
+        .command('delete', target: ['secret_notes', secretNote.content]);
+    ref.invalidate(fidoStateProvider(_session.devicePath));
+  }
+
+  @override
+  Future<FidoSecretNote> change(FidoSecretNote secretNote, String content) {
+    // TODO: implement change
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> create(String content) async {
+    await _session
+        .command('add', target: ['secret_notes'], params: {'content': content});
+    ref.invalidate(fidoStateProvider(_session.devicePath));
+    // return result;
+  }
+}

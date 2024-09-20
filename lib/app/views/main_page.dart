@@ -24,6 +24,7 @@ import '../../android/state.dart';
 import '../../core/state.dart';
 import '../../fido/views/fingerprints_screen.dart';
 import '../../fido/views/passkeys_screen.dart';
+import '../../fido/views/secret_notes_screen.dart';
 import '../../fido/views/webauthn_page.dart';
 import '../../home/views/home_message_page.dart';
 import '../../home/views/home_screen.dart';
@@ -161,6 +162,7 @@ class MainPage extends ConsumerWidget {
                 Section.securityKey => const WebAuthnScreen(),
                 Section.passkeys => PasskeysScreen(data),
                 Section.fingerprints => FingerprintsScreen(data),
+                Section.secretNotes => SecretNotesScreen(data),
                 Section.certificates => PivScreen(data.node.path),
                 Section.slots => OtpScreen(data.node.path),
               };

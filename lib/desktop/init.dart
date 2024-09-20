@@ -219,6 +219,7 @@ Future<Widget> initialize(List<String> argv) async {
       // FIDO
       fidoStateProvider.overrideWithProvider(desktopFidoState.call),
       fingerprintProvider.overrideWithProvider(desktopFingerprintProvider.call),
+      secretNotesProvider.overrideWithProvider(desktopSecretNotesProvider.call),
       credentialProvider.overrideWithProvider(desktopCredentialProvider.call),
       // PIV
       pivStateProvider.overrideWithProvider(desktopPivState.call),

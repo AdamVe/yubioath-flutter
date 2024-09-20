@@ -1020,6 +1020,175 @@ abstract class _Fingerprint extends Fingerprint {
       throw _privateConstructorUsedError;
 }
 
+FidoSecretNote _$FidoSecretNoteFromJson(Map<String, dynamic> json) {
+  return _FidoSecretNote.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FidoSecretNote {
+  String get id => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
+
+  /// Serializes this FidoSecretNote to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of FidoSecretNote
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $FidoSecretNoteCopyWith<FidoSecretNote> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FidoSecretNoteCopyWith<$Res> {
+  factory $FidoSecretNoteCopyWith(
+          FidoSecretNote value, $Res Function(FidoSecretNote) then) =
+      _$FidoSecretNoteCopyWithImpl<$Res, FidoSecretNote>;
+  @useResult
+  $Res call({String id, String content});
+}
+
+/// @nodoc
+class _$FidoSecretNoteCopyWithImpl<$Res, $Val extends FidoSecretNote>
+    implements $FidoSecretNoteCopyWith<$Res> {
+  _$FidoSecretNoteCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FidoSecretNote
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? content = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FidoSecretNoteImplCopyWith<$Res>
+    implements $FidoSecretNoteCopyWith<$Res> {
+  factory _$$FidoSecretNoteImplCopyWith(_$FidoSecretNoteImpl value,
+          $Res Function(_$FidoSecretNoteImpl) then) =
+      __$$FidoSecretNoteImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, String content});
+}
+
+/// @nodoc
+class __$$FidoSecretNoteImplCopyWithImpl<$Res>
+    extends _$FidoSecretNoteCopyWithImpl<$Res, _$FidoSecretNoteImpl>
+    implements _$$FidoSecretNoteImplCopyWith<$Res> {
+  __$$FidoSecretNoteImplCopyWithImpl(
+      _$FidoSecretNoteImpl _value, $Res Function(_$FidoSecretNoteImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FidoSecretNote
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? content = null,
+  }) {
+    return _then(_$FidoSecretNoteImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FidoSecretNoteImpl extends _FidoSecretNote {
+  _$FidoSecretNoteImpl({required this.id, required this.content}) : super._();
+
+  factory _$FidoSecretNoteImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FidoSecretNoteImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String content;
+
+  @override
+  String toString() {
+    return 'FidoSecretNote(id: $id, content: $content)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FidoSecretNoteImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, content);
+
+  /// Create a copy of FidoSecretNote
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FidoSecretNoteImplCopyWith<_$FidoSecretNoteImpl> get copyWith =>
+      __$$FidoSecretNoteImplCopyWithImpl<_$FidoSecretNoteImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FidoSecretNoteImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FidoSecretNote extends FidoSecretNote {
+  factory _FidoSecretNote(
+      {required final String id,
+      required final String content}) = _$FidoSecretNoteImpl;
+  _FidoSecretNote._() : super._();
+
+  factory _FidoSecretNote.fromJson(Map<String, dynamic> json) =
+      _$FidoSecretNoteImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get content;
+
+  /// Create a copy of FidoSecretNote
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FidoSecretNoteImplCopyWith<_$FidoSecretNoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
 mixin _$FingerprintEvent {
   @optionalTypeArgs

@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "Passkeys",
+    "s_secret_notes": "Secret notes",
     "s_no_passkeys": "No passkeys",
     "l_ready_to_use": "Ready to use",
     "l_register_sk_on_websites": "Register as a Security Key on websites",
@@ -527,6 +528,7 @@
     "s_fingerprints": "Fingerprints",
     "l_fingerprint_captured": "Fingerprint captured successfully!",
     "s_fingerprint_added": "Fingerprint added",
+    "s_secret_note_added": "Secret note created",
     "l_adding_fingerprint_failed": "Error adding fingerprint: {message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "Set up fingerprints",
     "p_setup_fingerprints_desc": "Fingerprints need to be set up before the key can be used.",
     "s_add_fingerprint": "Add fingerprint",
+    "s_add_secret_note": "New secret note",
     "s_delete_fingerprint": "Delete fingerprint",
     "l_delete_fingerprint_desc": "Remove the fingerprint from the YubiKey",
     "s_fingerprint_deleted": "Fingerprint deleted",
     "p_warning_delete_fingerprint": "This will delete the fingerprint from your YubiKey.",
     "s_fingerprints_get_started": "Get started with fingerprints",
+    "s_secret_notes_get_started": "Get started with secret notes",
     "p_set_fingerprints_desc": "Before it's possible to register fingerprints, a PIN needs to be set.",
+    "p_use_secret_note_desc": "Before it's possible to use secret notes, a PIN needs to be set.",
     "l_no_fps_added": "No fingerprints have been added",
     "s_rename_fp": "Rename fingerprint",
     "l_rename_fp_desc": "Change the name",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "Add one or more (up to five) fingerprints",
+    "l_add_secret_note": "Add a new secret note",
     "l_fingerprints_used": "{used}/5 fingerprints registered",
     "@l_fingerprints_used": {
         "placeholders": {

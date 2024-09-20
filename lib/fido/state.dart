@@ -55,11 +55,23 @@ final fingerprintProvider = AsyncNotifierProvider.autoDispose
   () => throw UnimplementedError(),
 );
 
+final secretNotesProvider = AsyncNotifierProvider.autoDispose
+    .family<FidoSecretNotesNotifier, List<FidoSecretNote>, DevicePath>(
+  () => throw UnimplementedError(),
+);
+
 abstract class FidoFingerprintsNotifier
     extends AutoDisposeFamilyAsyncNotifier<List<Fingerprint>, DevicePath> {
   Stream<FingerprintEvent> registerFingerprint({String? name});
   Future<Fingerprint> renameFingerprint(Fingerprint fingerprint, String name);
   Future<void> deleteFingerprint(Fingerprint fingerprint);
+}
+
+abstract class FidoSecretNotesNotifier
+    extends AutoDisposeFamilyAsyncNotifier<List<FidoSecretNote>, DevicePath> {
+  Future<void> create(String content);
+  Future<FidoSecretNote> change(FidoSecretNote secretNote, String content);
+  Future<void> delete(FidoSecretNote secretNote);
 }
 
 final credentialProvider = AsyncNotifierProvider.autoDispose

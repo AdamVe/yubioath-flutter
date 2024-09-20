@@ -36,6 +36,7 @@ const oathAppDrawer = Key('$_prefix.drawer.oath');
 const u2fAppDrawer = Key('$_prefix.drawer.fido.webauthn');
 const fidoPasskeysAppDrawer = Key('$_prefix.drawer.fido.passkeys');
 const fidoFingerprintsAppDrawer = Key('$_prefix.drawer.fido.fingerprints');
+const fidoSecretNotesAppDrawer = Key('$_prefix.drawer.fido.secretnotes');
 const otpAppDrawer = Key('$_prefix.drawer.otp');
 const pivAppDrawer = Key('$_prefix.drawer.piv');
 const hsmauthAppDrawer = Key('$_prefix.drawer.hsmauth');

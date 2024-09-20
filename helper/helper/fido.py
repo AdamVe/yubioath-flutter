@@ -36,6 +36,7 @@ from smartcard.Exceptions import NoCardException, CardConnectionException
 from dataclasses import asdict
 from time import sleep
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -207,6 +208,7 @@ class Ctap2Node(RpcNode):
             permissions |= ClientPin.PERMISSION.BIO_ENROLL
         if Config.is_supported(self._info):
             permissions |= ClientPin.PERMISSION.AUTHENTICATOR_CFG
+        permissions |= ClientPin.PERMISSION.MAKE_CREDENTIAL
         try:
             if permissions:
                 self._token = self.client_pin.get_pin_token(pin, permissions)
@@ -252,6 +254,17 @@ class Ctap2Node(RpcNode):
             self.client_pin.ctap, self.client_pin.protocol, self._token
         )
         return FingerprintsNode(bio)
+
+    @child(condition=lambda self: CredentialManagement.is_supported(self._info))
+    def secret_notes(self):
+        if not self._token:
+            raise AuthRequiredException()
+        credential_management = CredentialManagement(
+            self.ctap, self.client_pin.protocol, self._token
+        )
+        return SecretNotesNode(
+            self.ctap, self.client_pin, self._token, credential_management
+        )
 
     @child(condition=lambda self: CredentialManagement.is_supported(self._info))
     def credentials(self):
@@ -412,5 +425,115 @@ class FingerprintNode(RpcNode):
     @action
     def delete(self, params, event, signal):
         self.bio.remove_enrollment(self.template_id)
+        self.refresh()
+        return dict()
+
+
+class SecretNotesNode(RpcNode):
+    def __init__(self, ctap, client_pin, token, credman):
+        super().__init__()
+        self.ctap = ctap
+        self.client_pin = client_pin
+        self.token = token
+        self.credman = credman
+        self._notes = {}
+        self.refresh()
+
+    def refresh(self):
+        data = self.credman.get_metadata()
+        if data.get(CredentialManagement.RESULT.EXISTING_CRED_COUNT) == 0:
+            self._notes = {}
+        else:
+            # find our rpid
+            all_rpids = {
+                rp[CredentialManagement.RESULT.RP]["id"]: dict(
+                    rp_id=rp[CredentialManagement.RESULT.RP]["id"],
+                    rp_id_hash=rp[CredentialManagement.RESULT.RP_ID_HASH],
+                )
+                for rp in self.credman.enumerate_rps()
+            }
+
+            # if "YA_SECRET_NOTES" in all_rpids:
+            self._notes = {
+                cred[CredentialManagement.RESULT.CREDENTIAL_ID]["id"].hex(): dict(
+                    credential_id=cred[CredentialManagement.RESULT.CREDENTIAL_ID],
+                    user_id=cred[CredentialManagement.RESULT.USER]["id"],
+                    user_name=cred[CredentialManagement.RESULT.USER]["name"],
+                    display_name=cred[CredentialManagement.RESULT.USER].get(
+                        "displayName", None
+                    ),
+                )
+                for cred in self.credman.enumerate_creds(
+                    all_rpids["YA_SECRET_NOTES"]["rp_id_hash"]
+                )
+            }
+            # else:
+            #     self._notes = {}
+
+    def list_children(self):
+        return self._notes
+
+    def create_child(self, name):
+        if name in self._notes:
+            return SecretNoteNode(self.credman, self._notes[name], self.refresh)
+        return super().create_child(name)
+
+    @action
+    def add(self, params, event, signal):
+        # name = params.get("name", None)
+        content = params.get("content", None)
+
+        clientDataHash = b"\0" * 32
+
+        self.ctap.make_credential(
+            clientDataHash,
+            {"id": "YA_SECRET_NOTES", "name": os.urandom(32).hex()},
+            {"id": os.urandom(32), "name": content},
+            [{"type": "public-key", "alg": -7}],
+            options={"rk": True},
+            extensions={"credBlob": os.urandom(32)},
+            pin_uv_protocol=self.client_pin.protocol.VERSION,
+            pin_uv_param=self.client_pin.protocol.authenticate(
+                self.token, clientDataHash
+            ),
+            event=event,
+        )
+
+        # Prepare parameters for makeCredential
+        # rp = {"id": "YA_SECRET_NOTES", "name": os.urandom(32).hex()}
+        # user = {"id": os.urandom(32), "name": content}
+        # challenge = b"Y2hhbGxlbmdl"
+        # client = Fido2Client(self.ctap.device,
+        #                      origin="https://test.com")
+        #
+        # result = client.make_credential(
+        #     PublicKeyCredentialCreationOptions(
+        #         {"id": "test.com", "name": os.urandom(32).hex()},
+        #         {"id": os.urandom(32), "name": content},
+        #         challenge,
+        #         [{"type": "public-key", "alg": -7}]
+        #     )
+        # )
+        return dict()
+
+
+class SecretNoteNode(RpcNode):
+    def __init__(self, credman, refresh, secret_note_data):
+        super().__init__()
+        self.credman = credman
+        self.refresh = refresh
+        self.data = secret_note_data
+
+    def get_data(self):
+        return self.data
+
+    @action
+    def update(self, params, event, signal):
+        self.refresh()
+        return dict()
+
+    @action
+    def delete(self, params, event, signal):
+        self.credman.delete(self.data)
         self.refresh()
         return dict()

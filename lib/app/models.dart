@@ -37,6 +37,7 @@ enum Section {
   securityKey([Capability.u2f]),
   fingerprints([Capability.fido2]),
   passkeys([Capability.fido2]),
+  secretNotes([Capability.fido2]),
   certificates([Capability.piv]),
   slots([Capability.otp]);
 
@@ -50,6 +51,7 @@ enum Section {
         Section.securityKey => l10n.s_security_key,
         Section.fingerprints => l10n.s_fingerprints,
         Section.passkeys => l10n.s_passkeys,
+        Section.secretNotes => l10n.s_secret_notes,
         Section.certificates => l10n.s_certificates,
         Section.slots => l10n.s_slots,
       };

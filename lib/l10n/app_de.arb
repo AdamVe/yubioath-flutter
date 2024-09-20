@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "Passkeys",
+    "s_secret_notes": null,
     "s_no_passkeys": "Keine Passkeys",
     "l_ready_to_use": "Bereit zur Verwendung",
     "l_register_sk_on_websites": "Als Sicherheitsschlüssel auf Webseiten registrieren",
@@ -527,6 +528,7 @@
     "s_fingerprints": "Fingerabdrücke",
     "l_fingerprint_captured": "Fingerabdruck erfolgreich aufgenommen!",
     "s_fingerprint_added": "Fingerabdruck hinzugefügt",
+    "s_secret_note_added": null,
     "l_adding_fingerprint_failed": "Fehler beim Hinzufügen des Fingerabdrucks: {message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "Fingerabdrücke einrichten",
     "p_setup_fingerprints_desc": "Fingerabdrücken müssen eingerichtet werden, bevor der Schlüssel verwendet werden kann.",
     "s_add_fingerprint": "Fingerabdruck hinzufügen",
+    "s_add_secret_note": null,
     "s_delete_fingerprint": "Fingerabdruck löschen",
     "l_delete_fingerprint_desc": "Den Fingerabdruck vom YubKey entfernen",
     "s_fingerprint_deleted": "Fingerabdruck gelöscht",
     "p_warning_delete_fingerprint": "Das löscht den Fingerabdruck von Ihrem YubiKey.",
     "s_fingerprints_get_started": "Starten Sie mit Fingerabdrücken",
+    "s_secret_notes_get_started": null,
     "p_set_fingerprints_desc": "Bevor Sie Fingerabdrücke hinzufügen können, muss eine PIN gesetzt werden.",
+    "p_use_secret_note_desc": null,
     "l_no_fps_added": "Es wurden keine Fingerabdrücke hinzugefügt",
     "s_rename_fp": "Fingerabdruck umbenennen",
     "l_rename_fp_desc": "Den Namen ändern",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "Fügen Sie einen oder bis zu fünf Fingerabdrücke hinzu",
+    "l_add_secret_note": null,
     "l_fingerprints_used": "{used}/5 Fingerabdrücke registriert",
     "@l_fingerprints_used": {
         "placeholders": {

@@ -47,6 +47,7 @@ extension on Section {
         Section.securityKey => features.fido,
         Section.passkeys => features.fido,
         Section.fingerprints => features.fingerprints,
+        Section.secretNotes => features.secretNotes,
         Section.slots => features.otp,
         Section.certificates => features.piv,
       };

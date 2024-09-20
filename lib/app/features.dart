@@ -25,3 +25,5 @@ final otp = root.feature('otp');
 final management = root.feature('management');
 
 final fingerprints = fido.feature('fingerprints');
+
+final secretNotes = fido.feature('secretNotes');

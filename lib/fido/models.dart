@@ -79,6 +79,16 @@ class Fingerprint with _$Fingerprint {
 }
 
 @freezed
+class FidoSecretNote with _$FidoSecretNote {
+  const FidoSecretNote._();
+  factory FidoSecretNote({required String id, required String content}) =
+      _FidoSecretNote;
+
+  factory FidoSecretNote.fromJson(Map<String, dynamic> json) =>
+      _$FidoSecretNoteFromJson(json);
+}
+
+@freezed
 class FingerprintEvent with _$FingerprintEvent {
   factory FingerprintEvent.capture(int remaining) = _EventCapture;
   factory FingerprintEvent.complete(Fingerprint fingerprint) = _EventComplete;

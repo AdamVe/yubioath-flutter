@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "Mã bảo mật",
+    "s_secret_notes": null,
     "s_no_passkeys": "Không có mã bảo mật",
     "l_ready_to_use": "Sẵn sàng sử dụng",
     "l_register_sk_on_websites": "Đăng ký làm Security Key trên các trang web",
@@ -527,6 +528,7 @@
     "s_fingerprints": "Vân tay",
     "l_fingerprint_captured": "Vân tay đã được ghi lại thành công!",
     "s_fingerprint_added": "Vân tay đã được thêm",
+    "s_secret_note_added": null,
     "l_adding_fingerprint_failed": "Lỗi khi thêm vân tay: {message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "Thiết lập vân tay",
     "p_setup_fingerprints_desc": "Cần thiết lập vân tay trước khi có thể sử dụng khóa.",
     "s_add_fingerprint": "Thêm vân tay",
+    "s_add_secret_note": null,
     "s_delete_fingerprint": "Xóa vân tay",
     "l_delete_fingerprint_desc": "Xóa vân tay khỏi YubiKey",
     "s_fingerprint_deleted": "Vân tay đã bị xóa",
     "p_warning_delete_fingerprint": "Điều này sẽ xóa vân tay khỏi YubiKey của bạn.",
     "s_fingerprints_get_started": "Bắt đầu với vân tay",
+    "s_secret_notes_get_started": null,
     "p_set_fingerprints_desc": "Trước khi có thể đăng ký vân tay, cần thiết lập mã PIN.",
+    "p_use_secret_note_desc": null,
     "l_no_fps_added": "Chưa có vân tay nào được thêm",
     "s_rename_fp": "Đổi tên vân tay",
     "l_rename_fp_desc": "Thay đổi tên",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "Thêm một hoặc nhiều (tối đa năm) vân tay",
+    "l_add_secret_note": null,
     "l_fingerprints_used": "{used}/5 vân tay đã đăng ký",
     "@l_fingerprints_used": {
         "placeholders": {

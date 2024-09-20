@@ -499,6 +499,7 @@
         }
     },
     "s_passkeys": "パスキー",
+    "s_secret_notes": null,
     "s_no_passkeys": "パスキーがありません",
     "l_ready_to_use": "使用可能",
     "l_register_sk_on_websites": "Webサイトでセキュリティキーとして登録してください",
@@ -527,6 +528,7 @@
     "s_fingerprints": "指紋",
     "l_fingerprint_captured": "指紋が正常に読み取られました！",
     "s_fingerprint_added": "指紋が追加されました",
+    "s_secret_note_added": null,
     "l_adding_fingerprint_failed": "指紋の追加エラー：{message}",
     "@l_adding_fingerprint_failed": {
         "placeholders": {}
@@ -540,12 +542,15 @@
     "s_setup_fingerprints": "指紋を設定",
     "p_setup_fingerprints_desc": "キーを使用する前に指紋を設定する必要があります。",
     "s_add_fingerprint": "指紋を追加",
+    "s_add_secret_note": null,
     "s_delete_fingerprint": "指紋を削除",
     "l_delete_fingerprint_desc": "YubiKeyから指紋を削除します",
     "s_fingerprint_deleted": "指紋が削除されました",
     "p_warning_delete_fingerprint": "これにより、YubiKeyから指紋が削除されます。",
     "s_fingerprints_get_started": "指紋の使用を開始",
+    "s_secret_notes_get_started": null,
     "p_set_fingerprints_desc": "指紋を登録する前に、PINを設定する必要があります。",
+    "p_use_secret_note_desc": null,
     "l_no_fps_added": "追加されている指紋はありません",
     "s_rename_fp": "指紋の名前を変更",
     "l_rename_fp_desc": "名前を変更します",
@@ -557,6 +562,7 @@
         }
     },
     "l_add_one_or_more_fps": "指紋を1つ以上（最大5つ）追加してください",
+    "l_add_secret_note": null,
     "l_fingerprints_used": "{used}/5の指紋が登録されています",
     "@l_fingerprints_used": {
         "placeholders": {

@@ -32,3 +32,7 @@ final fingerprints = fido.feature('fingerprints');
 
 final fingerprintsEdit = fingerprints.feature('edit');
 final fingerprintsDelete = fingerprints.feature('delete');
+
+final secretNotes = fido.feature('secretNotes');
+final secretNotesEdit = secretNotes.feature('edit');
+final secretNotesDelete = secretNotes.feature('delete');

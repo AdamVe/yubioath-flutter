@@ -107,6 +107,29 @@ class FidoActions extends ConsumerWidget {
   }
 }
 
+List<ActionItem> buildSecretNoteActions(
+    FidoSecretNote secretNote, AppLocalizations l10n) {
+  return [
+    ActionItem(
+      key: keys.editSecretNoteAction,
+      feature: features.secretNotesEdit,
+      icon: const Icon(Symbols.edit),
+      title: l10n.s_rename_fp,
+      subtitle: l10n.l_rename_fp_desc,
+      intent: EditIntent(secretNote),
+    ),
+    ActionItem(
+      key: keys.deleteSecretNoteAction,
+      feature: features.secretNotesDelete,
+      actionStyle: ActionStyle.error,
+      icon: const Icon(Symbols.delete),
+      title: l10n.s_delete_fingerprint,
+      subtitle: l10n.l_delete_fingerprint_desc,
+      intent: DeleteIntent(secretNote),
+    ),
+  ];
+}
+
 List<ActionItem> buildFingerprintActions(
     Fingerprint fingerprint, AppLocalizations l10n) {
   return [
